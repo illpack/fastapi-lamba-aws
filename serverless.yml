@@ -1,0 +1,17 @@
+service: lambda-fastapi
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  stage: ${opt:stage}
+  region: eu-west-1
+  lambdaHashingVersion: 20201221
+  memorySize: 256
+  timeout: 30
+  apiName: ${self:service}-${opt:stage}
+  apiGateway:
+    description: REST API ${self:service}
+    metrics: true
+
+functions: ${file(functions.yml):functions}

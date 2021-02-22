@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  lambda-fastapi-prod:
+    build:
+      context: .
+      dockerfile: ./compose/prod/Dockerfile
+    image: 105477761364.dkr.ecr.eu-west-1.amazonaws.com/lambda-fastapi:latest
+    container_name: lambda-fastapi-prod
+    ports:
+      - 9000:8080
+
+  lambda-fastapi-dev:
+    build:
+      context: .
+      dockerfile: ./compose/dev/Dockerfile
+    image: lambda-fastapi-dev:latest
+    container_name: lambda-fastapi-dev
+    volumes:
+      - ./src:/usr/src/app/src
+    ports:
+      - 8000:8000

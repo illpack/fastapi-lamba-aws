@@ -1,0 +1,16 @@
+functions:
+  myAwesomeFastAPIFunction:
+    image: 105477761364.dkr.ecr.eu-west-1.amazonaws.com/lambda-fastapi@sha256:cc85e1e3b0a862115deee4f151e981c79d5b453fb0645099c6e86a29deeea0e0
+    events:
+      - http:
+          path: ping/
+          method: get
+          cors: true
+      - http:
+          path: api/v1/users/
+          method: any
+          cors: true
+      - http:
+          path: api/v1/users/{id}
+          method: any
+          cors: true
