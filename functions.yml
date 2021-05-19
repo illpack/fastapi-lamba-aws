@@ -1,16 +1,16 @@
 functions:
-  myAwesomeFastAPIFunction:
-    image: 105477761364.dkr.ecr.eu-west-1.amazonaws.com/lambda-fastapi@sha256:cc85e1e3b0a862115deee4f151e981c79d5b453fb0645099c6e86a29deeea0e0
+  StylibWebhookFunctions:
+    image: 358152105115.dkr.ecr.eu-west-2.amazonaws.com/serverless-webhook-listener@sha256:a23f4c8ab65b7af4397eb738301dce91afe33623c78cee574f0fa6d7103c2c1a
     events:
       - http:
           path: ping/
           method: get
           cors: true
       - http:
-          path: api/v1/users/
-          method: any
+          path: webhook/
+          method: post
           cors: true
       - http:
-          path: api/v1/users/{id}
-          method: any
+          path: webhook_test/
+          method: get
           cors: true

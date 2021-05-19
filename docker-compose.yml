@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/prod/Dockerfile
-    image: 105477761364.dkr.ecr.eu-west-1.amazonaws.com/lambda-fastapi:latest
+    image: 358152105115.dkr.ecr.eu-west-2.amazonaws.com/serverless-webhook-listener:latest
     container_name: lambda-fastapi-prod
     ports:
       - 9000:8080
@@ -14,9 +14,11 @@ services:
     build:
       context: .
       dockerfile: ./compose/dev/Dockerfile
+    env_file:
+      - ./.env
     image: lambda-fastapi-dev:latest
     container_name: lambda-fastapi-dev
     volumes:
       - ./src:/usr/src/app/src
     ports:
-      - 8000:8000
+      - 8001:8000

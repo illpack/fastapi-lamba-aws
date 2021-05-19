@@ -3,8 +3,8 @@ from mangum import Mangum
 from api_v1.api import router as api_router
 
 app = FastAPI(
-    title="My Awesome FastAPI app",
-    description="This is super fancy, with auto docs and everything!",
+    title="Stylib Test Webhook",
+    description="Updates __events table on webhooks",
     version="0.1.0",
 )
 
@@ -14,6 +14,6 @@ async def healthcheck():
     return {"Success": "Pong!"}
 
 
-app.include_router(api_router, prefix="/api/v1")
+app.include_router(api_router)
 
 handler = Mangum(app)
